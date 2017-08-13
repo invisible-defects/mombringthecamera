@@ -2,8 +2,8 @@ import cv2
 import matplotlib
 import numpy
 
-trafficlightCascade = cv2.CascadeClassifier('cascade.xml')
-cap = cv2.VideoCapture('test.avi')
+trafficlightCascade = cv2.CascadeClassifier('cascade1.xml')
+cap = cv2.VideoCapture('test.mp4')
 
 while (cap.isOpened()):
     ret, frame = cap.read()
@@ -14,6 +14,7 @@ while (cap.isOpened()):
     for (x, y, w, h) in lights:
         cv2.rectangle(gray, (x, y), (x+w, y+h), (255, 0, 0), 2)
 
+    cv2.imshow('original', frame)
     cv2.imshow('gray', gray)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
